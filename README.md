@@ -3,7 +3,7 @@
 Prerequisites:
 
 ```
-# MySQL in einem Docker Container starten
+# MySQL 
 docker run --name javalandDB -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=app -p 3306:3306 -d mysql
 ```
 
