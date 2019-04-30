@@ -8,7 +8,7 @@ pipeline {
            }
         }
 
-        stage('Build') {
+        stage('CheckStyle') {
             steps{
                 echo "checkstyle"
                 sh "mvn clean package checkstyle:checkstyle"
