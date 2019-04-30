@@ -4,8 +4,17 @@ pipeline {
         stage('Build') {
            steps{
                echo "build"
+               sh "mvn clean package checkstyle:checkstyle"
            }
         }
+
+        stage('Build') {
+            steps{
+                echo "checkstyle"
+                sh "mvn clean package checkstyle:checkstyle"
+                }
+        }
+
         stage('Test') {
            steps{
                echo "test"
