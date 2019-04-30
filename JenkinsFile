@@ -53,34 +53,10 @@ pipeline {
             steps{
                 script {
                     echo "Assume the test is OK"
+                    sh 'docker stop conf-app-test || true && docker rm conf-app-test || true'
+                    sh 'docker run -d --name conf-app-test -p 8090:8080 conf-app:latest'
                 }
             }
         }
-        stage('Parallel Run') {
-            parallel {
-                stage('Run1') {
-                    steps {
-                        echo "RUN1"
-                        sh 'docker stop conf-app-test || true && docker rm conf-app-test || true'
-                        sh 'docker run -d --name conf-app-test -p 8090:8080 conf-app-project:latest'
-                    }
-                }
-                stage('Run2') {
-                    steps {
-                         echo "RUN2"
-                    }
-                }
-                stage('Run3') {
-                    steps {
-                        echo "RUN3"
-                        sh 'docker stop conf-app-uat || true && docker rm petclinic-uat || true'
-                        sh 'docker run -d --name conf-app-uat -p 8290:8080 conf-app-project:latest'
-                    }
-                }
-            }
-        }
-
-
-
     }
 }
