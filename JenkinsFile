@@ -54,7 +54,7 @@ pipeline {
                 script {
                     echo "Assume the test is OK"
                     sh 'docker stop conf-app-test || true && docker rm conf-app-test || true'
-                    sh 'docker run -d --name conf-app-test -p 8090:8080 conf-app:latest'
+                    sh 'docker run -d --name conf-app-test -p 8995:8080 conf-app:latest'
                 }
             }
         }
